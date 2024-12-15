@@ -1,0 +1,1720 @@
+2024/12/15 20:23:25 (0,Follower ,0)   @make
+2024/12/15 20:23:25 (0,Follower ,0)   @readPersist   decoding error: EOF
+2024/12/15 20:23:25 (0,Follower ,0)   @FollowerTimer   Timer 1 Setup
+2024/12/15 20:23:25 (1,Follower ,0)   @make
+2024/12/15 20:23:25 (1,Follower ,0)   @readPersist   decoding error: EOF
+2024/12/15 20:23:25 (2,Follower ,0)   @make
+2024/12/15 20:23:25 (1,Follower ,0)   @FollowerTimer   Timer 2 Setup
+2024/12/15 20:23:25 (2,Follower ,0)   @readPersist   decoding error: EOF
+2024/12/15 20:23:25 (2,Follower ,0)   @FollowerTimer   Timer 3 Setup
+Test: initial election ...
+2024/12/15 20:23:25 (0,Follower ,0)   @FollowerTimer   Timer 1 Timeout, become candidate
+2024/12/15 20:23:25 (0,Follower ,0)   ROLE SWITCH TO Candidate @election
+2024/12/15 20:23:25 (0,Candidate,1)   @FollowerTimer   >>> sendRequestVote to 2
+2024/12/15 20:23:25 (0,Candidate,1)   @FollowerTimer   >>> sendRequestVote to 1
+2024/12/15 20:23:25 (0,Candidate,1)   @FollowerTimer   Timer 4 Setup
+2024/12/15 20:23:25 (2,Follower ,1)   @RequestVote     args = {Term:1 CandidateId:0 LastLogIndex:0 LastLogTerm:0} reply = {Term:0 VoteGranted:true}
+2024/12/15 20:23:25 (1,Follower ,1)   @RequestVote     args = {Term:1 CandidateId:0 LastLogIndex:0 LastLogTerm:0} reply = {Term:0 VoteGranted:true}
+2024/12/15 20:23:25 (0,Candidate,1)   @FollowerTimer   <<< sendRequestVote to 1 get {Term:0 VoteGranted:true}
+2024/12/15 20:23:25 (0,Candidate,1)   ROLE SWITCH TO Leader    @electionWin
+2024/12/15 20:23:25 (0,Leader   ,1)   @FollowerTimer   <<< sendRequestVote to 2 get {Term:0 VoteGranted:true}
+2024/12/15 20:23:25 (0,Leader   ,1)   @FollowerTimer   Timer 4 Received cancel signal
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:25 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 2 Received cancel signal
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 5 Setup
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 6 Setup
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 3 Received cancel signal
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:25 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 5 Received cancel signal
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 6 Received cancel signal
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 8 Setup
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 7 Setup
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:25 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 7 Received cancel signal
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 9 Setup
+2024/12/15 20:23:25 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 8 Received cancel signal
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 10 Setup
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:25 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 9 Received cancel signal
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 11 Setup
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 12 Setup
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 10 Received cancel signal
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:25 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 12 Received cancel signal
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 11 Received cancel signal
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 13 Setup
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 14 Setup
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:25 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 14 Received cancel signal
+2024/12/15 20:23:25 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 15 Setup
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 13 Received cancel signal
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 16 Setup
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:25 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 16 Received cancel signal
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 17 Setup
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 15 Received cancel signal
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 18 Setup
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:25 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 17 Received cancel signal
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 20 Setup
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 19 Setup
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 18 Received cancel signal
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:25 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 19 Received cancel signal
+2024/12/15 20:23:25 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:25 (2,Follower ,1)   @FollowerTimer   Timer 21 Setup
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 22 Setup
+2024/12/15 20:23:25 (1,Follower ,1)   @FollowerTimer   Timer 20 Received cancel signal
+2024/12/15 20:23:25 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @GetState   RETURN (1,true)
+2024/12/15 20:23:26 (1,Follower ,1)   @GetState   RETURN (1,false)
+2024/12/15 20:23:26 (2,Follower ,1)   @GetState   RETURN (1,false)
+2024/12/15 20:23:26 (0,Leader   ,1)   @GetState   RETURN (1,true)
+2024/12/15 20:23:26 (1,Follower ,1)   @GetState   RETURN (1,false)
+2024/12/15 20:23:26 (2,Follower ,1)   @GetState   RETURN (1,false)
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 22 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 23 Setup
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 21 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 24 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 24 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 23 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 26 Setup
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 25 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 25 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 27 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 26 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 28 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 27 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 29 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 28 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 30 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 29 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 31 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 30 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 32 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 31 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 33 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 32 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 34 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 33 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 36 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 34 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 35 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 36 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 37 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 35 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 38 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 37 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 39 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 40 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 38 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 39 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 41 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 40 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 42 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 41 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 43 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 42 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 44 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 43 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 45 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 46 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 44 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 45 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 46 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 48 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 47 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 47 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 49 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 50 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 48 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 50 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 51 Setup
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 52 Setup
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 49 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 51 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 53 Setup
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 54 Setup
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 52 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 54 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 55 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 53 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 56 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 55 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 57 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 56 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 58 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 59 Setup
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 57 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 58 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 60 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 59 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 61 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 60 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 62 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 61 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 63 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 64 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 62 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 63 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 65 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 64 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 66 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 65 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 67 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 66 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 68 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 67 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 68 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 70 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 69 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 70 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 72 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 69 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 71 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 72 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 74 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 73 Setup
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 71 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 73 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 75 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 74 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 76 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 75 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 76 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 78 Setup
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 77 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 77 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 79 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 78 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 80 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 79 Received cancel signal
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 80 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 81 Setup
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 82 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 82 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 83 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 81 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 84 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:26 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 83 Received cancel signal
+2024/12/15 20:23:26 (2,Follower ,1)   @FollowerTimer   Timer 85 Setup
+2024/12/15 20:23:26 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 84 Received cancel signal
+2024/12/15 20:23:26 (1,Follower ,1)   @FollowerTimer   Timer 86 Setup
+2024/12/15 20:23:26 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 85 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 87 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 86 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 88 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 87 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 89 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 88 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 90 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 89 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 91 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 90 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 92 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 91 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 93 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 92 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 94 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 93 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 95 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 94 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 96 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 95 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 97 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 98 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 96 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 99 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 97 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 98 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 100 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 99 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 101 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 100 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 102 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 101 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 103 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 102 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 104 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 103 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 105 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 104 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 106 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 105 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 107 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 108 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 106 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 107 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 109 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 108 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 110 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 111 Setup
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 109 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 110 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 112 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 112 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 114 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 113 Setup
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 111 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 113 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 115 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 114 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 116 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 115 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 116 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 118 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 117 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 117 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 119 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 120 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 118 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 119 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 121 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 122 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 120 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 121 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 123 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 122 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 124 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 123 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 125 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 124 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 126 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 126 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 128 Setup
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 125 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 127 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 127 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 129 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 130 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 128 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 129 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 132 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 131 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 130 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 132 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 133 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 134 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 131 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 133 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 135 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 134 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 136 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 135 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 137 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 138 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 136 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 138 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 137 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 140 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 139 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 142 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 139 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 141 Setup
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 140 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 143 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 141 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 144 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 142 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 143 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 145 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 144 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 146 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 147 Setup
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 145 Received cancel signal
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 148 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 146 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:27 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 148 Received cancel signal
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 150 Setup
+2024/12/15 20:23:27 (1,Follower ,1)   @FollowerTimer   Timer 149 Setup
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:27 (2,Follower ,1)   @FollowerTimer   Timer 147 Received cancel signal
+2024/12/15 20:23:27 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (0,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:28 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 150 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 151 Setup
+2024/12/15 20:23:28 (1,Follower ,1)   @FollowerTimer   Timer 149 Received cancel signal
+2024/12/15 20:23:28 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Follower ,1)   @FollowerTimer   Timer 152 Setup
+2024/12/15 20:23:28 (0,Leader   ,1)   @GetState   RETURN (1,true)
+2024/12/15 20:23:28 (1,Follower ,1)   @GetState   RETURN (1,false)
+2024/12/15 20:23:28 (2,Follower ,1)   @GetState   RETURN (1,false)
+  ... Passed
+2024/12/15 20:23:28 (0,Leader   ,1)   @Heartbeat   Received cancel signal
+2024/12/15 20:23:28 (1,Follower ,1)   @FollowerTimer   Timer 152 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 151 Received cancel signal
+2024/12/15 20:23:28 (0,Follower ,0)   @make
+2024/12/15 20:23:28 (0,Follower ,0)   @readPersist   decoding error: EOF
+2024/12/15 20:23:28 (0,Follower ,0)   @FollowerTimer   Timer 153 Setup
+2024/12/15 20:23:28 (1,Follower ,0)   @make
+2024/12/15 20:23:28 (1,Follower ,0)   @readPersist   decoding error: EOF
+2024/12/15 20:23:28 (1,Follower ,0)   @FollowerTimer   Timer 154 Setup
+2024/12/15 20:23:28 (2,Follower ,0)   @make
+2024/12/15 20:23:28 (2,Follower ,0)   @readPersist   decoding error: EOF
+Test: election after network failure ...
+2024/12/15 20:23:28 (2,Follower ,0)   @FollowerTimer   Timer 155 Setup
+2024/12/15 20:23:28 (1,Follower ,0)   @FollowerTimer   Timer 154 Timeout, become candidate
+2024/12/15 20:23:28 (1,Follower ,0)   ROLE SWITCH TO Candidate @election
+2024/12/15 20:23:28 (1,Candidate,1)   @FollowerTimer   >>> sendRequestVote to 2
+2024/12/15 20:23:28 (1,Candidate,1)   @FollowerTimer   Timer 156 Setup
+2024/12/15 20:23:28 (1,Candidate,1)   @FollowerTimer   >>> sendRequestVote to 0
+2024/12/15 20:23:28 (0,Follower ,1)   @RequestVote     args = {Term:1 CandidateId:1 LastLogIndex:0 LastLogTerm:0} reply = {Term:0 VoteGranted:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @RequestVote     args = {Term:1 CandidateId:1 LastLogIndex:0 LastLogTerm:0} reply = {Term:0 VoteGranted:true}
+2024/12/15 20:23:28 (1,Candidate,1)   @FollowerTimer   <<< sendRequestVote to 0 get {Term:0 VoteGranted:true}
+2024/12/15 20:23:28 (1,Candidate,1)   ROLE SWITCH TO Leader    @electionWin
+2024/12/15 20:23:28 (1,Leader   ,1)   @FollowerTimer   <<< sendRequestVote to 2 get {Term:0 VoteGranted:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @FollowerTimer   Timer 156 Received cancel signal
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 155 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 157 Setup
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 153 Received cancel signal
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 158 Setup
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (0,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 158 Received cancel signal
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 160 Setup
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 157 Received cancel signal
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 159 Setup
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 159 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 161 Setup
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 162 Setup
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 160 Received cancel signal
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 161 Received cancel signal
+2024/12/15 20:23:28 (0,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 163 Setup
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 162 Received cancel signal
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 164 Setup
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 165 Setup
+2024/12/15 20:23:28 (0,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 163 Received cancel signal
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 164 Received cancel signal
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 166 Setup
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 165 Received cancel signal
+2024/12/15 20:23:28 (0,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 167 Setup
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 166 Received cancel signal
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 168 Setup
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 167 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 169 Setup
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 168 Received cancel signal
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 170 Setup
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 169 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 171 Setup
+2024/12/15 20:23:28 (0,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 172 Setup
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 170 Received cancel signal
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 174 Setup
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 171 Received cancel signal
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 172 Received cancel signal
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 173 Setup
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 176 Setup
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 173 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 174 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 175 Setup
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (2,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 175 Received cancel signal
+2024/12/15 20:23:28 (0,Follower ,1)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:1 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:1 Success:true}
+2024/12/15 20:23:28 (2,Follower ,1)   @FollowerTimer   Timer 177 Setup
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 178 Setup
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 176 Received cancel signal
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:1 Success:true}
+2024/12/15 20:23:28 (0,Follower ,1)   @GetState   RETURN (1,false)
+2024/12/15 20:23:28 (1,Leader   ,1)   @GetState   RETURN (1,true)
+2024/12/15 20:23:28 (2,Follower ,1)   @GetState   RETURN (1,false)
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (0,Follower ,1)   @FollowerTimer   Timer 178 Timeout, become candidate
+2024/12/15 20:23:28 (0,Follower ,1)   ROLE SWITCH TO Candidate @election
+2024/12/15 20:23:28 (0,Candidate,2)   @FollowerTimer   >>> sendRequestVote to 2
+2024/12/15 20:23:28 (0,Candidate,2)   @FollowerTimer   Timer 179 Setup
+2024/12/15 20:23:28 (0,Candidate,2)   @FollowerTimer   >>> sendRequestVote to 1
+2024/12/15 20:23:28 (2,Follower ,2)   @RequestVote     args = {Term:2 CandidateId:0 LastLogIndex:0 LastLogTerm:0} reply = {Term:1 VoteGranted:true}
+2024/12/15 20:23:28 (0,Candidate,2)   @FollowerTimer   <<< sendRequestVote to 2 get {Term:1 VoteGranted:true}
+2024/12/15 20:23:28 (0,Candidate,2)   ROLE SWITCH TO Leader    @electionWin
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (0,Leader   ,2)   @FollowerTimer   Timer 179 Received cancel signal
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:28 (2,Follower ,2)   @AppendEntries   args = {Term:2 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:true}
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 177 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 180 Setup
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:28 (2,Follower ,2)   @AppendEntries   args = {Term:2 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:true}
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 180 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 181 Setup
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:28 (2,Follower ,2)   @AppendEntries   args = {Term:2 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:true}
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 181 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 182 Setup
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:28 (2,Follower ,2)   @AppendEntries   args = {Term:2 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:true}
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 182 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 183 Setup
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (2,Follower ,2)   @AppendEntries   args = {Term:2 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:true}
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 183 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 184 Setup
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:28 (2,Follower ,2)   @AppendEntries   args = {Term:2 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:true}
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 184 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 185 Setup
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:28 (2,Follower ,2)   @AppendEntries   args = {Term:2 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:true}
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 185 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 186 Setup
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:true}
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (2,Follower ,2)   @AppendEntries   args = {Term:2 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:true}
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:true}
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 186 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 187 Setup
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:28 (2,Follower ,2)   @AppendEntries   args = {Term:2 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:true}
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 187 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 188 Setup
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:28 (2,Follower ,2)   @AppendEntries   args = {Term:2 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:true}
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 188 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 189 Setup
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:true}
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:28 (2,Follower ,2)   @AppendEntries   args = {Term:2 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:true}
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 189 Received cancel signal
+2024/12/15 20:23:28 (2,Follower ,2)   @FollowerTimer   Timer 190 Setup
+2024/12/15 20:23:28 (0,Leader   ,2)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:true}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (0,Leader   ,2)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:2 LeaderId:0 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:true}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 190 Received cancel signal
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 191 Setup
+2024/12/15 20:23:29 (0,Leader   ,2)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:true}
+2024/12/15 20:23:29 (0,Leader   ,2)   @GetState   RETURN (2,true)
+2024/12/15 20:23:29 (2,Follower ,2)   @GetState   RETURN (2,false)
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 191 Received cancel signal
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 193 Setup
+2024/12/15 20:23:29 (0,Leader   ,2)   @Heartbeat   Received cancel signal
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 192 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 193 Received cancel signal
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 194 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 192 Received cancel signal
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 195 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 194 Received cancel signal
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 196 Setup
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 195 Received cancel signal
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 197 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 196 Received cancel signal
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 197 Received cancel signal
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 199 Setup
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 198 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (0,Leader   ,2)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 198 Received cancel signal
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 201 Setup
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 199 Received cancel signal
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 200 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 200 Received cancel signal
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 202 Setup
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 201 Received cancel signal
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 203 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 203 Received cancel signal
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 204 Setup
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 205 Setup
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 202 Received cancel signal
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 207 Setup
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 204 Received cancel signal
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 205 Received cancel signal
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 206 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 208 Setup
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 207 Received cancel signal
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 206 Received cancel signal
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 209 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 208 Received cancel signal
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 210 Setup
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 209 Received cancel signal
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 211 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 212 Setup
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 210 Received cancel signal
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 211 Received cancel signal
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 213 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 212 Received cancel signal
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 214 Setup
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 213 Received cancel signal
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 215 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 214 Received cancel signal
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 216 Setup
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 215 Received cancel signal
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 217 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 216 Received cancel signal
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 218 Setup
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 217 Received cancel signal
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 219 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 218 Received cancel signal
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 219 Received cancel signal
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 221 Setup
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 220 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @AppendEntries   args = {Term:1 LeaderId:1 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:false}
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 220 Received cancel signal
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 222 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 2 get {Term:2 Success:false}
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:false}
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 221 Received cancel signal
+2024/12/15 20:23:29 (0,Leader   ,2)   @FollowerTimer   Timer 223 Setup
+2024/12/15 20:23:29 (0,Leader   ,2)   @GetState   RETURN (2,true)
+2024/12/15 20:23:29 (1,Leader   ,1)   @GetState   RETURN (1,true)
+2024/12/15 20:23:29 (2,Follower ,2)   @GetState   RETURN (2,false)
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Follower ,2)   @FollowerTimer   Timer 222 Timeout, become candidate
+2024/12/15 20:23:29 (2,Follower ,2)   ROLE SWITCH TO Candidate @election
+2024/12/15 20:23:29 (2,Candidate,3)   @FollowerTimer   >>> sendRequestVote to 1
+2024/12/15 20:23:29 (2,Candidate,3)   @FollowerTimer   Timer 224 Setup
+2024/12/15 20:23:29 (2,Candidate,3)   @FollowerTimer   >>> sendRequestVote to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:29 (2,Candidate,3)   @FollowerTimer   Timer 224 Timeout, become candidate
+2024/12/15 20:23:29 (2,Candidate,3)   ROLE SWITCH TO Candidate @election
+2024/12/15 20:23:29 (2,Candidate,4)   @FollowerTimer   >>> sendRequestVote to 1
+2024/12/15 20:23:29 (2,Candidate,4)   @FollowerTimer   >>> sendRequestVote to 0
+2024/12/15 20:23:29 (2,Candidate,4)   @FollowerTimer   Timer 225 Setup
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:29 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (2,Candidate,4)   @FollowerTimer   Timer 225 Timeout, become candidate
+2024/12/15 20:23:30 (2,Candidate,4)   ROLE SWITCH TO Candidate @election
+2024/12/15 20:23:30 (2,Candidate,5)   @FollowerTimer   >>> sendRequestVote to 1
+2024/12/15 20:23:30 (2,Candidate,5)   @FollowerTimer   Timer 226 Setup
+2024/12/15 20:23:30 (2,Candidate,5)   @FollowerTimer   >>> sendRequestVote to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (2,Candidate,5)   @FollowerTimer   Timer 226 Timeout, become candidate
+2024/12/15 20:23:30 (2,Candidate,5)   ROLE SWITCH TO Candidate @election
+2024/12/15 20:23:30 (2,Candidate,6)   @FollowerTimer   >>> sendRequestVote to 1
+2024/12/15 20:23:30 (2,Candidate,6)   @FollowerTimer   >>> sendRequestVote to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (2,Candidate,6)   @FollowerTimer   Timer 227 Setup
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (0,Leader   ,2)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (2,Candidate,6)   @FollowerTimer   Timer 227 Timeout, become candidate
+2024/12/15 20:23:30 (2,Candidate,6)   ROLE SWITCH TO Candidate @election
+2024/12/15 20:23:30 (2,Candidate,7)   @FollowerTimer   >>> sendRequestVote to 1
+2024/12/15 20:23:30 (2,Candidate,7)   @FollowerTimer   Timer 228 Setup
+2024/12/15 20:23:30 (2,Candidate,7)   @FollowerTimer   >>> sendRequestVote to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (0,Leader   ,2)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (2,Candidate,7)   @FollowerTimer   sendRequestVote Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (2,Candidate,7)   @FollowerTimer   Timer 228 Timeout, become candidate
+2024/12/15 20:23:30 (2,Candidate,7)   ROLE SWITCH TO Candidate @election
+2024/12/15 20:23:30 (2,Candidate,8)   @FollowerTimer   >>> sendRequestVote to 1
+2024/12/15 20:23:30 (2,Candidate,8)   @FollowerTimer   Timer 229 Setup
+2024/12/15 20:23:30 (2,Candidate,8)   @FollowerTimer   >>> sendRequestVote to 0
+2024/12/15 20:23:30 (2,Candidate,8)   @FollowerTimer   sendRequestVote Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:30 (0,Leader   ,2)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:30 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (2,Candidate,8)   @FollowerTimer   Timer 229 Timeout, become candidate
+2024/12/15 20:23:31 (2,Candidate,8)   ROLE SWITCH TO Candidate @election
+2024/12/15 20:23:31 (2,Candidate,9)   @FollowerTimer   >>> sendRequestVote to 1
+2024/12/15 20:23:31 (2,Candidate,9)   @FollowerTimer   Timer 230 Setup
+2024/12/15 20:23:31 (2,Candidate,9)   @FollowerTimer   >>> sendRequestVote to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (2,Candidate,9)   @FollowerTimer   sendRequestVote Error
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (2,Candidate,9)   @FollowerTimer   Timer 230 Timeout, become candidate
+2024/12/15 20:23:31 (2,Candidate,9)   ROLE SWITCH TO Candidate @election
+2024/12/15 20:23:31 (2,Candidate,10)   @FollowerTimer   >>> sendRequestVote to 1
+2024/12/15 20:23:31 (2,Candidate,10)   @FollowerTimer   Timer 231 Setup
+2024/12/15 20:23:31 (2,Candidate,10)   @FollowerTimer   >>> sendRequestVote to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 2
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Leader   ,1)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (2,Candidate,10)   @GetState   RETURN (10,false)
+2024/12/15 20:23:31 (2,Candidate,10)   @FollowerTimer   Timer 231 Timeout, become candidate
+2024/12/15 20:23:31 (2,Candidate,10)   ROLE SWITCH TO Candidate @election
+2024/12/15 20:23:31 (2,Candidate,11)   @FollowerTimer   >>> sendRequestVote to 1
+2024/12/15 20:23:31 (2,Candidate,11)   @FollowerTimer   Timer 232 Setup
+2024/12/15 20:23:31 (2,Candidate,11)   @FollowerTimer   >>> sendRequestVote to 0
+2024/12/15 20:23:31 (1,Leader   ,11)   ROLE SWITCH TO Follower  @updateTerm
+2024/12/15 20:23:31 (1,Follower ,11)   @RequestVote     args = {Term:11 CandidateId:2 LastLogIndex:0 LastLogTerm:0} reply = {Term:1 VoteGranted:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @Heartbeat   Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 233 Setup
+2024/12/15 20:23:31 (2,Candidate,11)   @FollowerTimer   <<< sendRequestVote to 1 get {Term:1 VoteGranted:true}
+2024/12/15 20:23:31 (2,Candidate,11)   ROLE SWITCH TO Leader    @electionWin
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (2,Leader   ,11)   @FollowerTimer   Timer 232 Received cancel signal
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 233 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 234 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (2,Leader   ,11)   @FollowerTimer   sendRequestVote Error
+2024/12/15 20:23:31 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 234 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 235 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 235 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 236 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 236 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 237 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 237 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 238 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 238 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 239 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 239 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 240 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 240 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 241 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 241 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 242 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 242 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 243 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 243 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 244 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 245 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 244 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 245 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 246 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 246 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 247 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 247 Received cancel signal
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 248 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:31 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 248 Received cancel signal
+2024/12/15 20:23:31 (1,Follower ,11)   @FollowerTimer   Timer 249 Setup
+2024/12/15 20:23:31 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 249 Received cancel signal
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 250 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (1,Follower ,11)   @GetState   RETURN (11,false)
+2024/12/15 20:23:32 (2,Leader   ,11)   @GetState   RETURN (11,true)
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (0,Leader   ,11)   ROLE SWITCH TO Follower  @updateTerm
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:2 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 251 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 251 Received cancel signal
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 252 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:2 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 250 Received cancel signal
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 253 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 253 Received cancel signal
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 254 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 252 Received cancel signal
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 255 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 254 Received cancel signal
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 255 Received cancel signal
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 257 Setup
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 256 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 256 Received cancel signal
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 258 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 257 Received cancel signal
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 259 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 258 Received cancel signal
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 260 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 259 Received cancel signal
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 261 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @FollowerTimer   sendRequestVote Error
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 260 Received cancel signal
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 261 Received cancel signal
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 263 Setup
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 262 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 263 Received cancel signal
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 265 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 264 Setup
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 262 Received cancel signal
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 264 Received cancel signal
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 266 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 265 Received cancel signal
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 267 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @FollowerTimer   sendRequestVote Error
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 266 Received cancel signal
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 268 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 267 Received cancel signal
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 269 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 268 Received cancel signal
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 270 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 269 Received cancel signal
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 271 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 270 Received cancel signal
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 273 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 272 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 271 Received cancel signal
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 273 Received cancel signal
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 274 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 275 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 272 Received cancel signal
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 274 Received cancel signal
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 276 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 275 Received cancel signal
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 277 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 276 Received cancel signal
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 278 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 277 Received cancel signal
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 279 Setup
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 279 Received cancel signal
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 280 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 281 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 278 Received cancel signal
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 1
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       >>> sendAppendEntries to 0
+2024/12/15 20:23:32 (1,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (0,Follower ,11)   @AppendEntries   args = {Term:11 LeaderId:2 PrevLogIndex:0 PrevLogTerm:0 Entries:[] LeaderCommit:0} reply = {Term:11 Success:true}
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 1 get {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 283 Setup
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 280 Received cancel signal
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 282 Setup
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 281 Received cancel signal
+2024/12/15 20:23:32 (2,Leader   ,11)   @Heartbeat       <<< sendAppendEntries to 0 get {Term:11 Success:true}
+2024/12/15 20:23:32 (1,Follower ,11)   @Heartbeat       sendAppendEntries Error
+2024/12/15 20:23:32 (0,Follower ,11)   @GetState   RETURN (11,false)
+2024/12/15 20:23:32 (1,Follower ,11)   @GetState   RETURN (11,false)
+2024/12/15 20:23:32 (2,Leader   ,11)   @GetState   RETURN (11,true)
+  ... Passed
+2024/12/15 20:23:32 (0,Follower ,11)   @FollowerTimer   Timer 282 Received cancel signal
+PASS
+2024/12/15 20:23:32 (1,Follower ,11)   @FollowerTimer   Timer 283 Received cancel signal
+ok  	assignment2/raft	7.486s
