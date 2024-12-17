@@ -21,6 +21,7 @@ import (
 	"assignment2/labrpc"
 	"bytes"
 	"encoding/gob"
+	"io"
 	"log"
 	"math/rand"
 	"sort"
@@ -46,9 +47,9 @@ type LogData struct {
 }
 
 type PersistData struct {
-	currentTerm int
-	voteFor     int
-	log         []LogData
+	CurrentTerm int
+	VoteFor     int
+	Log         []LogData
 }
 
 // 3 Roles in Raft
@@ -117,10 +118,8 @@ func (rf *Raft) GetState() (int, bool) {
 // where it can later be retrieved after a crash and restart.
 // see paper's Figure 2 for a description of what should be persistent.
 
+// call in lock
 func (rf *Raft) savePersist() {
-	rf.mu.Lock()
-	defer rf.mu.Unlock()
-
 	var buffer bytes.Buffer
 	encoder := gob.NewEncoder(&buffer)
 	pData := PersistData{rf.currentTerm, rf.voteFor, rf.log}
@@ -130,14 +129,13 @@ func (rf *Raft) savePersist() {
 		return
 	}
 
+	log.Printf("(%d,%s,%d)   @savePersist   SAVE\n", rf.me, rf.role, rf.currentTerm)
 	rf.persister.SaveRaftState(buffer.Bytes())
 }
 
 // restore previously persisted state.
+// call in lock
 func (rf *Raft) readPersist() {
-	rf.mu.Lock()
-	defer rf.mu.Unlock()
-
 	data := rf.persister.ReadRaftState()
 	buffer := bytes.NewBuffer(data)
 	decoder := gob.NewDecoder(buffer)
@@ -151,9 +149,9 @@ func (rf *Raft) readPersist() {
 		return
 	}
 
-	rf.currentTerm = pData.currentTerm
-	rf.voteFor = pData.voteFor
-	rf.log = pData.log
+	rf.currentTerm = pData.CurrentTerm
+	rf.voteFor = pData.VoteFor
+	rf.log = pData.Log
 }
 
 // example RequestVote RPC arguments structure.
@@ -192,6 +190,8 @@ func (rf *Raft) RequestVote(args RequestVoteArgs, reply *RequestVoteReply) {
 		reply.VoteGranted = false
 	}
 
+	rf.savePersist()
+
 	log.Printf("(%d,%s,%d)   @RequestVote     args = %+v reply = %+v\n", rf.me, rf.role, rf.currentTerm, args, *reply)
 }
 
@@ -214,6 +214,7 @@ func (rf *Raft) AppendEntries(args AppendEntriesArgs, reply *AppendEntriesReply)
 	defer rf.mu.Unlock()
 
 	if args.Term < rf.currentTerm {
+		reply.Term = rf.currentTerm
 		reply.Success = false
 		return
 	}
@@ -252,6 +253,8 @@ func (rf *Raft) AppendEntries(args AppendEntriesArgs, reply *AppendEntriesReply)
 			}
 		}
 	}
+
+	rf.savePersist()
 
 	log.Printf("(%d,%s,%d)   @AppendEntries   args = %+v reply = %+v\n", rf.me, rf.role, rf.currentTerm, args, *reply)
 }
@@ -305,6 +308,9 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 	log.Printf("(%d,%s,%d)   @Start           BEFORE LOG = %+v\n", rf.me, rf.role, rf.currentTerm, rf.log)
 	rf.log = append(rf.log, LogData{command, rf.currentTerm})
 	log.Printf("(%d,%s,%d)   @Start           AFTER  LOG = %+v\n", rf.me, rf.role, rf.currentTerm, rf.log)
+
+	rf.savePersist()
+
 	index := len(rf.log) - 1
 	term := rf.currentTerm
 	isLeader := true
@@ -360,6 +366,8 @@ func (rf *Raft) resetFollowerTimer() {
 			rf.currentTerm += 1
 			args := RequestVoteArgs{rf.currentTerm, rf.me, len(rf.log) - 1, rf.log[len(rf.log)-1].Term}
 			voteCnt := 1
+
+			rf.savePersist()
 			rf.resetFollowerTimer()
 
 			for i := range rf.peers {
@@ -476,7 +484,7 @@ func (rf *Raft) Heartbeat(done chan bool) {
 		rf.mu.Unlock()
 
 		select {
-		case <-time.After(30 * time.Millisecond):
+		case <-time.After(50 * time.Millisecond):
 			continue
 		case <-done:
 			log.Printf("(%d,%s,%d)   @Heartbeat   Received cancel signal", rf.me, rf.role, rf.currentTerm)
@@ -491,7 +499,10 @@ func (rf *Raft) Heartbeat(done chan bool) {
 // turn off debug output from this instance.
 func (rf *Raft) Kill() {
 	// Your code here, if desired.
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
 	close(rf.chTimerDone)
+	rf.chTimerDone = nil
 }
 
 // the service or tester wants to create a Raft server. the ports
@@ -505,7 +516,7 @@ func (rf *Raft) Kill() {
 // for any long-running work.
 func Make(peers []*labrpc.ClientEnd, me int,
 	persister *Persister, applyCh chan ApplyMsg) *Raft {
-	// log.SetOutput(io.Discard)
+	log.SetOutput(io.Discard)
 
 	rf := &Raft{}
 
@@ -513,6 +524,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.persister = persister
 	rf.me = me
 	rf.applyCh = applyCh
+	rf.chTimerDone = nil
 
 	// Your initialization code here.
 
@@ -520,10 +532,10 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	// log.Printf("(%d,%s,%d)   @make   peers = %+v persister = %+v\n", rf.me, rf.role, rf.currentTerm, peers, persister)
 	log.Printf("(%d,%s,%d)   @make\n", rf.me, rf.role, rf.currentTerm)
 	rf.resetFollowerTimer()
-	rf.mu.Unlock()
-
 	// initialize from state persisted before a crash
 	rf.readPersist()
+
+	rf.mu.Unlock()
 
 	return rf
 }
@@ -534,4 +546,7 @@ go test -run FailNoAgree > log.txt
 go test -run ConcurrentStarts > log.txt
 go test -run Rejoin > log.txt
 go test -run Backup > log.txt
+go test -run Persist1 > log.txt
+go test -run Persist2 > log.txt
+go test -run Persist3 > log.txt
 */
