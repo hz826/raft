@@ -21,7 +21,7 @@ import (
 	"assignment2/labrpc"
 	"bytes"
 	"encoding/gob"
-	"io"
+	"fmt"
 	"log"
 	"math/rand"
 	"sort"
@@ -82,7 +82,6 @@ type Raft struct {
 	me        int // index into peers[]
 	applyCh   chan ApplyMsg
 
-	// Your data here.
 	// Look at the paper's Figure 2 for a description of what
 	// state a Raft server must maintain.
 
@@ -96,20 +95,33 @@ type Raft struct {
 	nextIndex   []int
 	matchIndex  []int
 
-	chTimerDone chan bool
+	killTimerCh chan bool
+}
+
+var DEBUG bool = true
+
+func (rf *Raft) Log(lock bool, format string, v ...interface{}) {
+	if DEBUG {
+		if lock {
+			rf.mu.Lock()
+			defer rf.mu.Unlock()
+		}
+
+		prefix := fmt.Sprintf("(%d,%s,%d)   ", rf.me, rf.role, rf.currentTerm)
+		log.Printf(prefix+format, v...)
+	}
 }
 
 // return currentTerm and whether this server
 // believes it is the leader.
 func (rf *Raft) GetState() (int, bool) {
-	// Your code here.
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
 
 	term := rf.currentTerm
 	isleader := (rf.role == Leader)
 
-	log.Printf("(%d,%s,%d)   @GetState   RETURN (%d,%t)\n", rf.me, rf.role, rf.currentTerm, term, isleader)
+	rf.Log(false, "@GetState   RETURN (%d,%t)\n", term, isleader)
 
 	return term, isleader
 }
@@ -125,11 +137,11 @@ func (rf *Raft) savePersist() {
 	pData := PersistData{rf.currentTerm, rf.voteFor, rf.log}
 
 	if err := encoder.Encode(pData); err != nil {
-		log.Printf("(%d,%s,%d)   @savePersist   encoding error: %+v\n", rf.me, rf.role, rf.currentTerm, err)
+		rf.Log(false, "@savePersist   encoding error: %+v\n", err)
 		return
 	}
 
-	// log.Printf("(%d,%s,%d)   @savePersist   SAVE\n", rf.me, rf.role, rf.currentTerm)
+	rf.Log(false, "@savePersist     SAVE\n")
 	rf.persister.SaveRaftState(buffer.Bytes())
 }
 
@@ -142,7 +154,8 @@ func (rf *Raft) readPersist() {
 	var pData PersistData
 
 	if err := decoder.Decode(&pData); err != nil {
-		log.Printf("(%d,%s,%d)   @readPersist   decoding error: %+v\n", rf.me, rf.role, rf.currentTerm, err)
+		rf.Log(false, "@readPersist   decoding error: %+v\n", err)
+
 		rf.currentTerm = 0
 		rf.voteFor = -1
 		rf.log = []LogData{{nil, 0}}
@@ -172,13 +185,10 @@ type RequestVoteReply struct {
 
 // example RequestVote RPC handler.
 func (rf *Raft) RequestVote(args RequestVoteArgs, reply *RequestVoteReply) {
-	// Your code here.
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
 
-	if args.Term > rf.currentTerm {
-		rf.updateTerm(args.Term)
-	}
+	rf.updateTerm(args.Term)
 	reply.Term = rf.currentTerm
 
 	if args.Term < rf.currentTerm {
@@ -190,9 +200,8 @@ func (rf *Raft) RequestVote(args RequestVoteArgs, reply *RequestVoteReply) {
 		reply.VoteGranted = false
 	}
 
+	rf.Log(false, "@RequestVote     args = %+v reply = %+v\n", args, *reply)
 	rf.savePersist()
-
-	log.Printf("(%d,%s,%d)   @RequestVote     args = %+v reply = %+v\n", rf.me, rf.role, rf.currentTerm, args, *reply)
 }
 
 type AppendEntriesArgs struct {
@@ -227,9 +236,7 @@ func (rf *Raft) AppendEntries(args AppendEntriesArgs, reply *AppendEntriesReply)
 	if rf.role == Candidate || rf.voteFor == -1 {
 		rf.voteFor = args.LeaderId
 	}
-	if args.Term > rf.currentTerm {
-		rf.updateTerm(args.Term)
-	}
+	rf.updateTerm(args.Term)
 
 	reply.Term = rf.currentTerm
 
@@ -237,26 +244,21 @@ func (rf *Raft) AppendEntries(args AppendEntriesArgs, reply *AppendEntriesReply)
 		reply.Success = false
 	} else {
 		if !(args.PrevLogIndex+1 == len(rf.log) && len(args.Entries) == 0) {
-			log.Printf("(%d,%s,%d)   @AppendEntries   BEFORE LOG = %+v\n", rf.me, rf.role, rf.currentTerm, rf.log)
+			rf.Log(false, "@AppendEntries   BEFORE LOG = %+v\n", rf.log)
 			rf.log = append(rf.log[:args.PrevLogIndex+1], args.Entries...)
-			log.Printf("(%d,%s,%d)   @AppendEntries   AFTER  LOG = %+v\n", rf.me, rf.role, rf.currentTerm, rf.log)
+			rf.Log(false, "@AppendEntries   AFTER  LOG = %+v\n", rf.log)
 		}
 		reply.Success = true
 
 		if args.LeaderCommit > rf.commitIndex {
 			rf.commitIndex = min(args.LeaderCommit, len(rf.log)-1)
-
-			for rf.commitIndex > rf.lastApplied {
-				rf.lastApplied += 1
-				rf.applyCh <- ApplyMsg{rf.lastApplied, rf.log[rf.lastApplied].Command, false, []byte{}}
-				log.Printf("(%d,%s,%d)   @AppendEntries   APPLIED %d\n", rf.me, rf.role, rf.currentTerm, rf.lastApplied)
-			}
+			rf.tryApply()
 		}
 	}
 
-	rf.savePersist()
+	rf.Log(false, "@AppendEntries   args = %+v reply = %+v\n", args, *reply)
 
-	log.Printf("(%d,%s,%d)   @AppendEntries   args = %+v reply = %+v\n", rf.me, rf.role, rf.currentTerm, args, *reply)
+	rf.savePersist()
 }
 
 // example code to send a RequestVote RPC to a server.
@@ -299,15 +301,15 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
 
-	log.Printf("(%d,%s,%d)   @Start           command = %+v\n", rf.me, rf.role, rf.currentTerm, command)
+	rf.Log(false, "@Start           command = %+v\n", command)
 
 	if rf.role != Leader {
 		return -1, -1, false
 	}
 
-	log.Printf("(%d,%s,%d)   @Start           BEFORE LOG = %+v\n", rf.me, rf.role, rf.currentTerm, rf.log)
+	rf.Log(false, "@Start           BEFORE LOG = %+v\n", rf.log)
 	rf.log = append(rf.log, LogData{command, rf.currentTerm})
-	log.Printf("(%d,%s,%d)   @Start           AFTER  LOG = %+v\n", rf.me, rf.role, rf.currentTerm, rf.log)
+	rf.Log(false, "@Start           AFTER  LOG = %+v\n", rf.log)
 
 	rf.savePersist()
 
@@ -319,15 +321,27 @@ func (rf *Raft) Start(command interface{}) (int, int, bool) {
 
 // call in lock
 func (rf *Raft) updateTerm(newTerm int) {
-	rf.currentTerm = newTerm
-	rf.voteFor = -1
+	if newTerm > rf.currentTerm {
+		rf.currentTerm = newTerm
+		rf.voteFor = -1
 
-	if rf.role != Follower {
-		// Candidate / Leader -> Follower
-		log.Printf("(%d,%s,%d)   ROLE SWITCH TO %s @updateTerm\n", rf.me, rf.role, rf.currentTerm, Follower)
-		rf.role = Follower
+		if rf.role != Follower {
+			// Candidate / Leader -> Follower
 
-		rf.resetFollowerTimer()
+			rf.Log(false, "@updateTerm      ROLE SWITCH TO %s\n", Follower)
+			rf.role = Follower
+
+			rf.resetFollowerTimer()
+		}
+	}
+}
+
+// call in lock
+func (rf *Raft) tryApply() {
+	for rf.commitIndex > rf.lastApplied {
+		rf.lastApplied += 1
+		rf.applyCh <- ApplyMsg{rf.lastApplied, rf.log[rf.lastApplied].Command, false, []byte{}}
+		rf.Log(false, "@tryApply        APPLIED %d = %+v\n", rf.lastApplied, rf.log[:rf.lastApplied+1])
 	}
 }
 
@@ -335,19 +349,18 @@ var goroutineIDCounter int64
 
 // call in lock
 func (rf *Raft) resetFollowerTimer() {
-	if rf.chTimerDone != nil {
-		close(rf.chTimerDone)
-		rf.chTimerDone = nil
+	if rf.killTimerCh != nil {
+		close(rf.killTimerCh)
+		rf.killTimerCh = nil
 	}
-	rf.chTimerDone = make(chan bool)
+	rf.killTimerCh = make(chan bool)
 
 	go func(done chan bool) {
 		// random interval between 150-300ms
 		interval := time.Millisecond * time.Duration(150+rand.Intn(150))
+
 		id := atomic.AddInt64(&goroutineIDCounter, 1)
-		// rf.mu.Lock()
-		// log.Printf("(%d,%s,%d)   @FollowerTimer   Timer %d Setup\n", rf.me, rf.role, rf.currentTerm, id)
-		// rf.mu.Unlock()
+		rf.Log(true, "@FollowerTimer   Timer %d Setup\n", id)
 
 		select {
 		case <-time.After(interval):
@@ -357,14 +370,20 @@ func (rf *Raft) resetFollowerTimer() {
 			if rf.role == Leader {
 				return
 			}
-			log.Printf("(%d,%s,%d)   @FollowerTimer   Timer %d Timeout, become candidate\n", rf.me, rf.role, rf.currentTerm, id)
+			rf.Log(false, "@FollowerTimer   Timer %d Timeout, become candidate\n", id)
 
 			// Follower -> Candidate
-			log.Printf("(%d,%s,%d)   ROLE SWITCH TO %s @election\n", rf.me, rf.role, rf.currentTerm, Candidate)
+			rf.Log(false, "@election        ROLE SWITCH TO %s\n", Candidate)
 			rf.role = Candidate
 			rf.voteFor = rf.me
 			rf.currentTerm += 1
-			args := RequestVoteArgs{rf.currentTerm, rf.me, len(rf.log) - 1, rf.log[len(rf.log)-1].Term}
+
+			var args RequestVoteArgs
+			args.Term = rf.currentTerm
+			args.CandidateId = rf.me
+			args.LastLogIndex = len(rf.log) - 1
+			args.LastLogTerm = rf.log[len(rf.log)-1].Term
+
 			voteCnt := 1
 
 			rf.savePersist()
@@ -374,34 +393,38 @@ func (rf *Raft) resetFollowerTimer() {
 				if i == rf.me {
 					continue
 				}
-				go func(peerId int) {
-					// rf.mu.Lock()
-					log.Printf("(%d,%s,%d)   @FollowerTimer   >>> sendRequestVote to %d\n", rf.me, rf.role, rf.currentTerm, peerId)
-					// rf.mu.Unlock()
+				go func(i, term int) {
+					rf.Log(true, "@FollowerTimer   >>> sendRequestVote to %d\n", i)
 
 					var reply RequestVoteReply
-					ok := rf.sendRequestVote(peerId, args, &reply)
+					ok := rf.sendRequestVote(i, args, &reply)
 
 					rf.mu.Lock()
 					defer rf.mu.Unlock()
 
 					if !ok {
-						log.Printf("(%d,%s,%d)   @FollowerTimer   sendRequestVote Error\n", rf.me, rf.role, rf.currentTerm)
+						rf.Log(false, "@FollowerTimer   sendRequestVote Error\n")
 						return
 					}
-					log.Printf("(%d,%s,%d)   @FollowerTimer   <<< sendRequestVote to %d get %+v\n", rf.me, rf.role, rf.currentTerm, peerId, reply)
+					rf.Log(false, "@FollowerTimer   <<< sendRequestVote to %d get %+v\n", i, reply)
+
+					if reply.Term > term {
+						rf.updateTerm(reply.Term)
+					}
+					if reply.Term > term || rf.currentTerm > term {
+						return
+					}
 
 					if reply.VoteGranted {
 						voteCnt += 1
 					}
-
 					if voteCnt >= len(rf.peers)/2+1 && rf.role == Candidate {
 						// Candidate -> Leader
-						log.Printf("(%d,%s,%d)   ROLE SWITCH TO %s @electionWin\n", rf.me, rf.role, rf.currentTerm, Leader)
+						rf.Log(false, "@electionWin     ROLE SWITCH TO %s\n", Leader)
 						rf.role = Leader
-						if rf.chTimerDone != nil {
-							close(rf.chTimerDone)
-							rf.chTimerDone = nil
+						if rf.killTimerCh != nil {
+							close(rf.killTimerCh)
+							rf.killTimerCh = nil
 						}
 
 						rf.nextIndex = make([]int, len(rf.peers))
@@ -411,54 +434,67 @@ func (rf *Raft) resetFollowerTimer() {
 							rf.matchIndex[i] = 0
 						}
 
-						rf.chTimerDone = make(chan bool)
-						go rf.Heartbeat(rf.chTimerDone)
+						rf.killTimerCh = make(chan bool)
+						go rf.Heartbeat(rf.killTimerCh, rf.currentTerm)
 					}
-
-				}(i)
+				}(i, rf.currentTerm)
 			}
 		case <-done:
-			// rf.mu.Lock()
-			// log.Printf("(%d,%s,%d)   @FollowerTimer   Timer %d Received cancel signal", rf.me, rf.role, rf.currentTerm, id)
-			// rf.mu.Unlock()
+			rf.Log(true, "@FollowerTimer   Timer %d Received cancel signal", id)
 			return
 		}
-	}(rf.chTimerDone)
+	}(rf.killTimerCh)
 }
 
-func (rf *Raft) Heartbeat(done chan bool) {
+func (rf *Raft) Heartbeat(done chan bool, leaderTerm int) {
 	for {
 		rf.mu.Lock()
+
+		if rf.currentTerm > leaderTerm {
+			rf.Log(false, "@Heartbeat   Cancel because out of term")
+		}
 
 		for i := range rf.peers {
 			if i == rf.me {
 				continue
 			}
-			go func(peerId int) {
-				rf.mu.Lock()
-				args := AppendEntriesArgs{rf.currentTerm, rf.me, rf.nextIndex[peerId] - 1, rf.log[rf.nextIndex[peerId]-1].Term, rf.log[rf.nextIndex[peerId]:], rf.commitIndex}
-				lastLogIndex := len(rf.log) - 1
-				log.Printf("(%d,%s,%d)   @Heartbeat       >>> sendAppendEntries to %d\n", rf.me, rf.role, rf.currentTerm, peerId)
-				rf.mu.Unlock()
+
+			var args AppendEntriesArgs
+			args.Term = rf.currentTerm
+			args.LeaderId = rf.me
+			args.PrevLogIndex = rf.nextIndex[i] - 1
+			args.PrevLogTerm = rf.log[rf.nextIndex[i]-1].Term
+			args.Entries = rf.log[rf.nextIndex[i]:]
+			args.LeaderCommit = rf.commitIndex
+
+			go func(i, term, lastLogIndex int, args AppendEntriesArgs) {
+				rf.Log(true, "@Heartbeat       >>> sendAppendEntries to %d\n", i)
 
 				var reply AppendEntriesReply
-				ok := rf.sendAppendEntries(peerId, args, &reply)
+				ok := rf.sendAppendEntries(i, args, &reply)
 
 				rf.mu.Lock()
 				defer rf.mu.Unlock()
 
 				if !ok {
-					log.Printf("(%d,%s,%d)   @Heartbeat       sendAppendEntries Error\n", rf.me, rf.role, rf.currentTerm)
+					rf.Log(false, "@Heartbeat       sendAppendEntries Error\n")
 					return
 				}
-				log.Printf("(%d,%s,%d)   @Heartbeat       <<< sendAppendEntries to %d get %+v\n", rf.me, rf.role, rf.currentTerm, peerId, reply)
+				rf.Log(false, "@Heartbeat       <<< sendAppendEntries to %d get %+v\n", i, reply)
+
+				if reply.Term > term {
+					rf.updateTerm(reply.Term)
+				}
+				if reply.Term > term || rf.currentTerm > term {
+					return
+				}
 
 				if !reply.Success {
-					// rf.nextIndex[peerId] = max(1, rf.nextIndex[peerId] - 1)
-					rf.nextIndex[peerId] = max(1, len(rf.log)-int(float64(len(rf.log)-rf.nextIndex[peerId]+1)*1.1))
+					// rf.nextIndex[i] = max(1, rf.nextIndex[i] - 1)
+					rf.nextIndex[i] = max(1, len(rf.log)-int(float64(len(rf.log)-rf.nextIndex[i]+1)*1.1))
 				} else {
-					rf.nextIndex[peerId] = max(rf.nextIndex[peerId], lastLogIndex)
-					rf.matchIndex[peerId] = max(rf.matchIndex[peerId], lastLogIndex)
+					rf.nextIndex[i] = max(rf.nextIndex[i], lastLogIndex)
+					rf.matchIndex[i] = max(rf.matchIndex[i], lastLogIndex)
 					rf.matchIndex[rf.me] = max(rf.matchIndex[rf.me], lastLogIndex)
 
 					matchIndexCopy := make([]int, len(rf.matchIndex))
@@ -466,19 +502,14 @@ func (rf *Raft) Heartbeat(done chan bool) {
 					sort.Ints(matchIndexCopy)
 					majorityIndex := matchIndexCopy[(len(rf.matchIndex)-1)/2]
 
-					log.Printf("(%d,%s,%d)   @Heartbeat       get OK  match = %+v  majority = %d,%+v\n", rf.me, rf.role, rf.currentTerm, rf.matchIndex, majorityIndex, rf.log[majorityIndex].Term)
+					rf.Log(false, "@Heartbeat       get OK  match = %+v  majority = %d,%+v\n", rf.matchIndex, majorityIndex, rf.log[majorityIndex].Term)
 
 					if rf.log[majorityIndex].Term == rf.currentTerm {
 						rf.commitIndex = max(rf.commitIndex, majorityIndex)
-
-						for rf.commitIndex > rf.lastApplied {
-							rf.lastApplied += 1
-							rf.applyCh <- ApplyMsg{rf.lastApplied, rf.log[rf.lastApplied].Command, false, []byte{}}
-							log.Printf("(%d,%s,%d)   @Heartbeat       APPLIED %d\n", rf.me, rf.role, rf.currentTerm, rf.lastApplied)
-						}
+						rf.tryApply()
 					}
 				}
-			}(i)
+			}(i, rf.currentTerm, len(rf.log)-1, args)
 		}
 		rf.mu.Unlock()
 
@@ -486,7 +517,7 @@ func (rf *Raft) Heartbeat(done chan bool) {
 		case <-time.After(50 * time.Millisecond):
 			continue
 		case <-done:
-			log.Printf("(%d,%s,%d)   @Heartbeat   Received cancel signal", rf.me, rf.role, rf.currentTerm)
+			rf.Log(true, "@Heartbeat   Received cancel signal")
 			return
 		}
 	}
@@ -497,11 +528,11 @@ func (rf *Raft) Heartbeat(done chan bool) {
 // in Kill(), but it might be convenient to (for example)
 // turn off debug output from this instance.
 func (rf *Raft) Kill() {
-	// Your code here, if desired.
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	close(rf.chTimerDone)
-	rf.chTimerDone = nil
+
+	close(rf.killTimerCh)
+	rf.killTimerCh = nil
 }
 
 // the service or tester wants to create a Raft server. the ports
@@ -515,26 +546,20 @@ func (rf *Raft) Kill() {
 // for any long-running work.
 func Make(peers []*labrpc.ClientEnd, me int,
 	persister *Persister, applyCh chan ApplyMsg) *Raft {
-	log.SetOutput(io.Discard)
-
 	rf := &Raft{}
 
 	rf.peers = peers
 	rf.persister = persister
 	rf.me = me
 	rf.applyCh = applyCh
-	rf.chTimerDone = nil
-
-	// Your initialization code here.
+	rf.killTimerCh = nil
 
 	rf.mu.Lock()
-	// log.Printf("(%d,%s,%d)   @make   peers = %+v persister = %+v\n", rf.me, rf.role, rf.currentTerm, peers, persister)
-	log.Printf("(%d,%s,%d)   @make\n", rf.me, rf.role, rf.currentTerm)
-	rf.resetFollowerTimer()
-	// initialize from state persisted before a crash
-	rf.readPersist()
+	defer rf.mu.Unlock()
 
-	rf.mu.Unlock()
+	rf.Log(false, "@make   peers = %+v persister = %+v\n", peers, persister)
+	rf.resetFollowerTimer()
+	rf.readPersist()
 
 	return rf
 }
@@ -548,4 +573,5 @@ go test -run Backup > log.txt
 go test -run Persist1 > log.txt
 go test -run Persist2 > log.txt
 go test -run Persist3 > log.txt
+go test
 */
