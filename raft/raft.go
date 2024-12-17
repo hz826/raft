@@ -129,7 +129,7 @@ func (rf *Raft) savePersist() {
 		return
 	}
 
-	log.Printf("(%d,%s,%d)   @savePersist   SAVE\n", rf.me, rf.role, rf.currentTerm)
+	// log.Printf("(%d,%s,%d)   @savePersist   SAVE\n", rf.me, rf.role, rf.currentTerm)
 	rf.persister.SaveRaftState(buffer.Bytes())
 }
 
@@ -345,9 +345,9 @@ func (rf *Raft) resetFollowerTimer() {
 		// random interval between 150-300ms
 		interval := time.Millisecond * time.Duration(150+rand.Intn(150))
 		id := atomic.AddInt64(&goroutineIDCounter, 1)
-		rf.mu.Lock()
-		log.Printf("(%d,%s,%d)   @FollowerTimer   Timer %d Setup\n", rf.me, rf.role, rf.currentTerm, id)
-		rf.mu.Unlock()
+		// rf.mu.Lock()
+		// log.Printf("(%d,%s,%d)   @FollowerTimer   Timer %d Setup\n", rf.me, rf.role, rf.currentTerm, id)
+		// rf.mu.Unlock()
 
 		select {
 		case <-time.After(interval):
@@ -418,9 +418,9 @@ func (rf *Raft) resetFollowerTimer() {
 				}(i)
 			}
 		case <-done:
-			rf.mu.Lock()
-			log.Printf("(%d,%s,%d)   @FollowerTimer   Timer %d Received cancel signal", rf.me, rf.role, rf.currentTerm, id)
-			rf.mu.Unlock()
+			// rf.mu.Lock()
+			// log.Printf("(%d,%s,%d)   @FollowerTimer   Timer %d Received cancel signal", rf.me, rf.role, rf.currentTerm, id)
+			// rf.mu.Unlock()
 			return
 		}
 	}(rf.chTimerDone)
@@ -454,9 +454,8 @@ func (rf *Raft) Heartbeat(done chan bool) {
 				log.Printf("(%d,%s,%d)   @Heartbeat       <<< sendAppendEntries to %d get %+v\n", rf.me, rf.role, rf.currentTerm, peerId, reply)
 
 				if !reply.Success {
-					if rf.nextIndex[peerId] > 1 {
-						rf.nextIndex[peerId] -= 1
-					}
+					// rf.nextIndex[peerId] = max(1, rf.nextIndex[peerId] - 1)
+					rf.nextIndex[peerId] = max(1, len(rf.log)-int(float64(len(rf.log)-rf.nextIndex[peerId]+1)*1.1))
 				} else {
 					rf.nextIndex[peerId] = max(rf.nextIndex[peerId], lastLogIndex)
 					rf.matchIndex[peerId] = max(rf.matchIndex[peerId], lastLogIndex)
