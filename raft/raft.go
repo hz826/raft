@@ -460,7 +460,7 @@ func (rf *Raft) Heartbeat(done chan bool, leaderTerm int) {
 			}
 
 			var args AppendEntriesArgs
-			args.Term = rf.currentTerm
+			args.Term = leaderTerm
 			args.LeaderId = rf.me
 			args.PrevLogIndex = rf.nextIndex[i] - 1
 			args.PrevLogTerm = rf.log[rf.nextIndex[i]-1].Term
@@ -468,7 +468,13 @@ func (rf *Raft) Heartbeat(done chan bool, leaderTerm int) {
 			args.LeaderCommit = rf.commitIndex
 
 			go func(i, term, lastLogIndex int, args AppendEntriesArgs) {
-				rf.Log(true, "@Heartbeat       >>> sendAppendEntries to %d\n", i)
+				rf.mu.Lock()
+				if rf.currentTerm > term {
+					rf.mu.Unlock()
+					return
+				}
+				rf.Log(false, "@Heartbeat       >>> sendAppendEntries to %d\n", i)
+				rf.mu.Unlock()
 
 				var reply AppendEntriesReply
 				ok := rf.sendAppendEntries(i, args, &reply)
@@ -491,7 +497,7 @@ func (rf *Raft) Heartbeat(done chan bool, leaderTerm int) {
 
 				if !reply.Success {
 					// rf.nextIndex[i] = max(1, rf.nextIndex[i] - 1)
-					rf.nextIndex[i] = max(1, len(rf.log)-int(float64(len(rf.log)-rf.nextIndex[i]+1)*1.1))
+					rf.nextIndex[i] = max(1, len(rf.log)-int(float64(len(rf.log)-rf.nextIndex[i]+1)*2))
 				} else {
 					rf.nextIndex[i] = max(rf.nextIndex[i], lastLogIndex)
 					rf.matchIndex[i] = max(rf.matchIndex[i], lastLogIndex)
@@ -509,7 +515,7 @@ func (rf *Raft) Heartbeat(done chan bool, leaderTerm int) {
 						rf.tryApply()
 					}
 				}
-			}(i, rf.currentTerm, len(rf.log)-1, args)
+			}(i, leaderTerm, len(rf.log)-1, args)
 		}
 		rf.mu.Unlock()
 
